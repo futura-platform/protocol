@@ -8,6 +8,7 @@ require (
 	github.com/emersion/go-imap v1.2.1
 	github.com/emersion/go-imap/v2 v2.0.0-beta.4
 	github.com/emersion/go-message v0.18.1
+	github.com/nyaruka/phonenumbers v1.4.0
 	github.com/puzpuzpuz/xsync/v3 v3.4.0
 	github.com/robin-samuel/mailstream v1.0.6
 	github.com/teivah/broadcast v0.1.0
@@ -24,5 +25,6 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	golang.org/x/sys v0.22.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/text v0.15.0 // indirect
+	google.golang.org/protobuf v1.34.1 // indirect
 )
