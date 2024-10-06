@@ -9,7 +9,7 @@ import (
 type Provider interface {
 	// Deprecated: for internal use only, define a Verifier to your params struct
 	// and let it be populated automatically
-	CreateVerifier(ctx context.Context, providerType string) (Verifier, error)
+	CreateSMSVerifier(ctx context.Context, providerType string) (Verifier, error)
 }
 
 type Verifier interface {
