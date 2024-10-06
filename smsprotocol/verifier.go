@@ -6,9 +6,9 @@ import (
 	"github.com/nyaruka/phonenumbers"
 )
 
+// Deprecated: for internal use only, define a Verifier to your params struct
+// and let it be populated automatically
 type Provider interface {
-	// Deprecated: for internal use only, define a Verifier to your params struct
-	// and let it be populated automatically
 	CreateSMSVerifier(ctx context.Context, providerType string) (Verifier, error)
 }
 
