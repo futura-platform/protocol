@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/futura-platform/protocol/netprotocol"
+	"github.com/futura-platform/protocol/netprotocol/proxyprotocol"
 )
 
 type ChromeCookie struct {
@@ -33,7 +33,7 @@ type ExportSessionDetails struct {
 	CookieJar      http.CookieJar
 	SessionStorage map[string]any
 
-	Proxy *netprotocol.Proxy
+	Proxy *proxyprotocol.Proxy
 
 	MockedResponses []MockResponse
 }

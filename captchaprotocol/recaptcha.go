@@ -1,9 +1,9 @@
 package captchaprotocol
 
-import "github.com/futura-platform/protocol/netprotocol"
+import "github.com/futura-platform/protocol/netprotocol/proxyprotocol"
 
 type RecaptchaV2Params struct {
-	Proxy *netprotocol.Proxy `json:"-"`
+	Proxy *proxyprotocol.Proxy `json:"-"`
 
 	WebsiteURL          string `json:"websiteURL"`
 	WebsiteKey          string `json:"websiteKey"`

@@ -8,6 +8,8 @@ import (
 	"net"
 	"net/http"
 	"time"
+
+	"github.com/futura-platform/protocol/netprotocol/proxyprotocol"
 )
 
 type OrderedHeaders [][]string
@@ -16,8 +18,8 @@ type BaseHttpClient interface {
 
 	GetBrowserProfile() BrowserProfile
 
-	GetProxy() *Proxy
-	SetProxy(proxy *Proxy) error
+	GetProxy() *proxyprotocol.Proxy
+	SetProxy(proxy *proxyprotocol.Proxy) error
 
 	GetCookieJar() http.CookieJar
 	SetCookieJar(jar http.CookieJar)

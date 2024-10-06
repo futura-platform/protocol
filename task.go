@@ -11,6 +11,7 @@ import (
 	"github.com/futura-platform/protocol/flowprotocol"
 	"github.com/futura-platform/protocol/logprotocol"
 	"github.com/futura-platform/protocol/netprotocol"
+	"github.com/futura-platform/protocol/netprotocol/proxyprotocol"
 	"github.com/futura-platform/protocol/pubsubprotocol"
 	"github.com/futura-platform/protocol/sessionsprotocol"
 	"github.com/futura-platform/protocol/settingsprotocol"
@@ -26,7 +27,7 @@ type BaseTask interface {
 	sessionsprotocol.Provider
 	settingsprotocol.Provider
 	// basicgroupsprotocol.GenericProvider
-	ProxyProvider() basicgroupsprotocol.Provider[*netprotocol.Proxy]
+	ProxyProvider() basicgroupsprotocol.Provider[*proxyprotocol.Proxy]
 
 	// extendable getters
 	GetErrorDelay() time.Duration
@@ -45,7 +46,6 @@ type BaseTask interface {
 	WithContext(ctx context.Context) BaseTask
 
 	RotateProxy() error
-	SpawnSingleTabBrowser(proxy *netprotocol.Proxy) (*browserprotocol.SingleTabBrowser, context.CancelFunc, error)
 }
 
 // this is the type that users of the protocol package should use

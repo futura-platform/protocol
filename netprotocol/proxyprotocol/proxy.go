@@ -1,4 +1,4 @@
-package netprotocol
+package proxyprotocol
 
 import (
 	"encoding/json"
@@ -11,6 +11,8 @@ import (
 )
 
 type Proxy url.URL
+
+var _ basicgroupsprotocol.Parsable[*Proxy] = (*Proxy)(nil)
 
 func (*Proxy) ParseEntry(u string) (*Proxy, error) {
 	p, err := url.Parse(u)
