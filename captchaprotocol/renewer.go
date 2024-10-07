@@ -7,10 +7,10 @@ import (
 	"time"
 )
 
-func GetRecapRenewer[T CaptchaParams](
+func GetRenewer[T CaptchaParams](
+	ctx context.Context,
 	t interface {
 		Solver
-		context.Context
 
 		GetErrorDelay() time.Duration
 		FatalError(err error)
@@ -22,20 +22,20 @@ func GetRecapRenewer[T CaptchaParams](
 	var solver func() (string, time.Duration, error)
 	switch p := any(params).(type) {
 	case RecaptchaV2Params:
-		solver = func() (string, time.Duration, error) { return t.SolveRecaptchaV2(p, true) }
+		solver = func() (string, time.Duration, error) { return t.SolveRecaptchaV2(ctx, p, true) }
 	case RecaptchaV3Params:
-		solver = func() (string, time.Duration, error) { return t.SolveRecaptchaV3(p, true) }
+		solver = func() (string, time.Duration, error) { return t.SolveRecaptchaV3(ctx, p, true) }
 	case HcaptchaParams:
-		solver = func() (string, time.Duration, error) { return t.SolveHcaptcha(p, true) }
+		solver = func() (string, time.Duration, error) { return t.SolveHcaptcha(ctx, p, true) }
 	case TurnstileParams:
-		solver = func() (string, time.Duration, error) { return t.SolveTurnstile(p, true) }
+		solver = func() (string, time.Duration, error) { return t.SolveTurnstile(ctx, p, true) }
 	case ImageToTextParams:
-		solver = func() (string, time.Duration, error) { return t.SolveImageToText(p, true) }
+		solver = func() (string, time.Duration, error) { return t.SolveImageToText(ctx, p, true) }
 	default:
 		panic("Unknown captcha type: " + fmt.Sprintf("%T", params))
 	}
 	return NewCaptchaTokenRenewer(
-		t,
+		ctx,
 		t.BLog(),
 		t.GetErrorDelay(),
 		solver,

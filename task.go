@@ -22,7 +22,7 @@ type BaseTask interface {
 	flowprotocol.Context
 	logprotocol.Logger
 	netprotocol.BaseHttpClient
-	captchaprotocol.Solver
+	captchaprotocol.Provider
 	browserprotocol.Spawner
 	pubsubprotocol.Provider
 	sessionsprotocol.Provider

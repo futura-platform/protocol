@@ -1,15 +1,8 @@
 package captchaprotocol
 
 import (
+	"context"
 	"time"
-)
-
-type SolverService string
-
-const (
-	TwoCaptcha SolverService = "2captcha"
-	CapMonster SolverService = "capmonster"
-	CapSolver  SolverService = "capsolver"
 )
 
 type CaptchaParams interface {
@@ -17,11 +10,9 @@ type CaptchaParams interface {
 }
 
 type Solver interface {
-	SetSolverService(solverService SolverService)
-
-	SolveRecaptchaV2(params RecaptchaV2Params, silent bool) (string, time.Duration, error)
-	SolveRecaptchaV3(params RecaptchaV3Params, silent bool) (string, time.Duration, error)
-	SolveHcaptcha(params HcaptchaParams, silent bool) (string, time.Duration, error)
-	SolveTurnstile(params TurnstileParams, silent bool) (string, time.Duration, error)
-	SolveImageToText(params ImageToTextParams, silent bool) (string, time.Duration, error)
+	SolveRecaptchaV2(ctx context.Context, params RecaptchaV2Params, silent bool) (string, time.Duration, error)
+	SolveRecaptchaV3(ctx context.Context, params RecaptchaV3Params, silent bool) (string, time.Duration, error)
+	SolveHcaptcha(ctx context.Context, params HcaptchaParams, silent bool) (string, time.Duration, error)
+	SolveTurnstile(ctx context.Context, params TurnstileParams, silent bool) (string, time.Duration, error)
+	SolveImageToText(ctx context.Context, params ImageToTextParams, silent bool) (string, time.Duration, error)
 }
