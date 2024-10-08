@@ -15,8 +15,14 @@ type Proxy url.URL
 var _ basicgroupsprotocol.Parsable[*Proxy] = (*Proxy)(nil)
 
 func (*Proxy) ParseEntry(u string) (*Proxy, error) {
-	p, err := url.Parse(u)
-	if err != nil {
+	var p *url.URL
+	var err error
+	if strings.Contains(u, "://") {
+		p, err = url.Parse(u)
+		if err != nil {
+			return nil, fmt.Errorf("failed to parse proxy as URL: %w", err)
+		}
+	} else {
 		spl := strings.Split(u, ":")
 		if len(spl) == 2 {
 			return &Proxy{
