@@ -2,7 +2,6 @@ package settingsprotocol
 
 import (
 	"context"
-	"fmt"
 )
 
 type UserSettings struct {
@@ -21,14 +20,4 @@ type UserSettings struct {
 
 type Provider interface {
 	GetSettings(ctx context.Context) (UserSettings, error)
-}
-
-var AmbientProvider Provider
-
-func GetSettings(ctx context.Context) (UserSettings, error) {
-	if AmbientProvider == nil {
-		return UserSettings{}, fmt.Errorf("ambient provider not set")
-	}
-
-	return AmbientProvider.GetSettings(ctx)
 }
