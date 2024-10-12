@@ -16,6 +16,7 @@ import (
 	"github.com/futura-platform/protocol/sessionsprotocol"
 	"github.com/futura-platform/protocol/settingsprotocol"
 	"github.com/futura-platform/protocol/smsprotocol"
+	"github.com/futura-platform/protocol/userinputprotocol"
 )
 
 type BaseTask interface {
@@ -28,6 +29,7 @@ type BaseTask interface {
 	sessionsprotocol.Provider
 	settingsprotocol.Provider
 	smsprotocol.Provider
+	userinputprotocol.Provider
 	// basicgroupsprotocol.GenericProvider
 	ProxyProvider() basicgroupsprotocol.Provider[*proxyprotocol.Proxy]
 
