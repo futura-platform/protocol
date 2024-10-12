@@ -16,5 +16,5 @@ type SingleTabBrowser struct {
 }
 
 type Spawner interface {
-	SpawnSingleTabBrowser(proxy *proxyprotocol.Proxy) (*SingleTabBrowser, context.CancelFunc, error)
+	SpawnSingleTabBrowser(ctx context.Context, proxy *proxyprotocol.Proxy) (*SingleTabBrowser, context.CancelFunc, error)
 }
