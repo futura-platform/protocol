@@ -14,10 +14,13 @@ type RecaptchaV2Params struct {
 }
 
 type RecaptchaV3Params struct {
+	Proxy *proxyprotocol.Proxy `json:"-"`
+
 	WebsiteURL   string `json:"websiteURL"`
 	WebsiteKey   string `json:"websiteKey"`
 	MinScore     string `json:"minScore,omitempty"`
 	PageAction   string `json:"pageAction,omitempty"`
 	IsEnterprise bool   `json:"isEnterprise,omitempty"`
 	ApiDomain    string `json:"apiDomain,omitempty"`
+	UserAgent    string `json:"userAgent,omitempty"`
 }
