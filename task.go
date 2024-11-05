@@ -35,7 +35,7 @@ type BaseTask interface {
 
 	// extendable getters
 	GetErrorDelay() time.Duration
-	HandleConsecutiveFails(errs []error) (bool, string)
+	HandleConsecutiveFails(errs []error) (wasHandled bool, nextStepLabel string)
 
 	// helpers
 	// logging
