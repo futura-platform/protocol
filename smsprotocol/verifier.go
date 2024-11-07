@@ -11,5 +11,11 @@ type Provider interface {
 }
 
 type Verifier interface {
-	GetCode(ctx context.Context, service, country string, onPhoneNumber func(phoneNumber *phonenumbers.PhoneNumber) error) (code string, err error)
+	GetNumber(ctx context.Context, service, country string) (Number, error)
+}
+
+type Number interface {
+	Phone() *phonenumbers.PhoneNumber
+
+	GetNextCode() (string, error)
 }
