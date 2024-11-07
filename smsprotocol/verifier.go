@@ -17,5 +17,5 @@ type Verifier interface {
 type Number interface {
 	Phone() *phonenumbers.PhoneNumber
 
-	GetNextCode() (string, error)
+	GetNextCode(context.Context) (string, error)
 }
