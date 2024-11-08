@@ -2,6 +2,8 @@ package sessionsprotocol
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -49,22 +51,44 @@ type Provider interface {
 	ExportSession(ctx context.Context, details ExportSessionDetails) (*url.URL, error)
 }
 
+type ScopedProvider[K comparable, V any] struct{}
 type providerWithContext interface {
 	context.Context
 	Provider
 }
 
-func SaveSession[T any](p providerWithContext, sessionID string, global bool, expireAt *time.Time, session T) error {
+func keyToSessionID(key any) (string, error) {
+	b, err := json.Marshal(key)
+	if err != nil {
+		panic(err)
+	}
+
+	return string(b), nil
+}
+
+func (ScopedProvider[K, V]) SaveSession(p providerWithContext, key K, global bool, expireAt *time.Time, session V) error {
+	sessionID, err := keyToSessionID(key)
+	if err != nil {
+		return fmt.Errorf("failed to convert key to session ID: %w", err)
+	}
 	return p.SaveSession(p, sessionID, reflect.TypeOf(session).String(), global, expireAt, session)
 }
 
-func LoadSession[T any](p providerWithContext, sessionID string, global bool) (*T, bool, error) {
-	session := new(T)
+func (ScopedProvider[K, V]) LoadSession(p providerWithContext, key K, global bool) (*V, bool, error) {
+	sessionID, err := keyToSessionID(key)
+	if err != nil {
+		return nil, false, fmt.Errorf("failed to convert key to session ID: %w", err)
+	}
+	session := new(V)
 	ok, err := p.LoadSession(p, sessionID, reflect.TypeOf(*session).String(), global, session)
 
 	return session, ok, err
 }
 
-func DeleteSession[T any](p providerWithContext, sessionID string, global bool) error {
-	return p.DeleteSession(p, sessionID, reflect.TypeOf(*new(T)).String(), global)
+func (ScopedProvider[K, V]) DeleteSession(p providerWithContext, key K, global bool) error {
+	sessionID, err := keyToSessionID(key)
+	if err != nil {
+		return fmt.Errorf("failed to convert key to session ID: %w", err)
+	}
+	return p.DeleteSession(p, sessionID, reflect.TypeOf(*new(V)).String(), global)
 }
