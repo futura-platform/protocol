@@ -1,8 +1,6 @@
 package logprotocol
 
 type Logger interface {
-	SetStep(step int)
-
 	LargeSuccess(args ...any)
 	LargeSuccessf(format string, args ...any)
 
