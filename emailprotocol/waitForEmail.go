@@ -102,8 +102,10 @@ func (e *Email) WaitForEmail(ctx context.Context, filter func(*mailstream.Mail) 
 			return nil, fmt.Errorf("error in email stream: %w", err)
 		case <-ctx.Done():
 			return nil, ctx.Err()
-		case mail := <-listener.Ch():
-			if filter(mail) {
+		case mail, ok := <-listener.Ch():
+			if !ok {
+				return nil, fmt.Errorf("email stream closed")
+			} else if filter(mail) {
 				return mail, nil
 			}
 		}
