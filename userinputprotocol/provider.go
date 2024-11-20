@@ -16,7 +16,7 @@ type InputField struct {
 }
 
 type Provider interface {
-	GetUserFormInput(ctx flowprotocol.Context, typeId string, details map[string]string, inputs []InputField) (UserFormInput, error)
+	GetUserFormInput(ctx flowprotocol.Context, typeId, imageUrl string, details map[string]string, inputs []InputField) (UserFormInput, error)
 }
 
 type UserFormInput interface {
