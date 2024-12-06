@@ -74,20 +74,19 @@ type Request struct {
 type Response struct {
 	*http.Response
 
-	BodyReader io.ReadCloser
-	readCache  []byte
+	readCache []byte
 }
 
-func (r *Response) Body() []byte {
+func (r *Response) GetBody() []byte {
 	if r.readCache != nil {
 		return r.readCache
 	}
 
-	defer r.BodyReader.Close()
+	defer r.Response.Body.Close()
 	var respBody []byte
 	var err error
 	if !(r.StatusCode >= 300 && r.StatusCode < 400) {
-		respBody, err = io.ReadAll(r.BodyReader)
+		respBody, err = io.ReadAll(r.Response.Body)
 		if err != nil {
 			fmt.Println("failed to read response body (2):", err)
 		}
@@ -97,5 +96,5 @@ func (r *Response) Body() []byte {
 }
 
 func (r *Response) JSON(v any) error {
-	return json.Unmarshal(r.Body(), v)
+	return json.Unmarshal(r.GetBody(), v)
 }
