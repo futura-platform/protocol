@@ -18,6 +18,7 @@ type RecaptchaV3Params struct {
 
 	WebsiteURL   string `json:"websiteURL"`
 	WebsiteKey   string `json:"websiteKey"`
+	WebsiteTitle string `json:"websiteTitle,omitempty"`
 	MinScore     string `json:"minScore,omitempty"`
 	PageAction   string `json:"pageAction,omitempty"`
 	IsEnterprise bool   `json:"isEnterprise,omitempty"`
