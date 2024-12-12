@@ -24,4 +24,11 @@ type RecaptchaV3Params struct {
 	IsEnterprise bool   `json:"isEnterprise,omitempty"`
 	ApiDomain    string `json:"apiDomain,omitempty"`
 	UserAgent    string `json:"userAgent,omitempty"`
+
+	Cookies []Cookie `json:"cookies,omitempty"`
+}
+
+type Cookie struct {
+	Name  string `json:"name"`
+	Value string `json:"value"`
 }
