@@ -12,6 +12,8 @@ type Provider interface {
 
 type Verifier interface {
 	GetNumber(ctx context.Context, service, country string) (Number, error)
+
+	LookupNumber(ctx context.Context, number *phonenumbers.PhoneNumber) (Number, bool, error)
 }
 
 type Number interface {
