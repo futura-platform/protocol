@@ -6,7 +6,7 @@ import (
 )
 
 type CaptchaParams interface {
-	RecaptchaV2Params | RecaptchaV3Params | HcaptchaParams | TurnstileParams | ImageToTextParams
+	RecaptchaV2Params | RecaptchaV3Params | HcaptchaParams | TurnstileParams | ImageToTextParams | DatadomeParams
 }
 
 type Solver interface {
@@ -15,4 +15,5 @@ type Solver interface {
 	SolveHcaptcha(ctx context.Context, params HcaptchaParams, silent bool) (string, time.Duration, error)
 	SolveTurnstile(ctx context.Context, params TurnstileParams, silent bool) (string, time.Duration, error)
 	SolveImageToText(ctx context.Context, params ImageToTextParams, silent bool) (string, time.Duration, error)
+	SolveDatadome(ctx context.Context, params DatadomeParams, silent bool) (string, time.Duration, error)
 }
