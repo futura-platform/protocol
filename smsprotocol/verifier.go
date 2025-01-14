@@ -20,4 +20,6 @@ type Number interface {
 	Phone() *phonenumbers.PhoneNumber
 
 	GetNextCode(context.Context) (string, error)
+
+	Close(context.Context) error
 }
