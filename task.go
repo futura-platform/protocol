@@ -40,6 +40,8 @@ type BaseTask interface {
 	// helpers
 	// step flow
 	GetSteps() []flowprotocol.TaskStep
+	CurrentStepIndex() int
+
 	CurrentStep() flowprotocol.TaskStep
 
 	// logging
