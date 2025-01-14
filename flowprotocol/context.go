@@ -2,8 +2,20 @@ package flowprotocol
 
 import (
 	"context"
+	"reflect"
+	"runtime"
+	"strings"
 	"time"
 )
+
+type Context interface {
+	context.Context
+
+	TaskId() string
+	FatalError(error)
+
+	Sleep(time.Duration)
+}
 
 type TaskStepResult struct {
 	NextStepLabel string // label of the next TaskStep to execute (or terminate to stop the task), nil goes to next step in the flow if success
@@ -20,11 +32,20 @@ type TaskStep struct {
 	StepGrouping string
 }
 
-type Context interface {
-	context.Context
+func (step TaskStep) GetStepLabel() string {
+	if step.Label == "" {
+		funcName := runtime.FuncForPC(reflect.ValueOf(step.StepFunc).Pointer()).Name()
+		spl := strings.Split(funcName, ".")
+		if len(spl) == 0 {
+			return ""
+		}
+		methodSegment := spl[len(spl)-1]
+		spl2 := strings.Split(methodSegment, "-")
+		if len(spl2) == 0 {
+			return ""
+		}
+		step.Label = spl2[0]
+	}
 
-	TaskId() string
-	FatalError(error)
-
-	Sleep(time.Duration)
+	return step.Label
 }

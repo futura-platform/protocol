@@ -38,6 +38,10 @@ type BaseTask interface {
 	HandleConsecutiveFails(errs []error) (wasHandled bool, nextStepLabel string)
 
 	// helpers
+	// step flow
+	GetSteps() []flowprotocol.TaskStep
+	CurrentStepLabel() flowprotocol.TaskStep
+
 	// logging
 	BLog() *log.Logger
 	Fatalf(format string, args ...any) error
