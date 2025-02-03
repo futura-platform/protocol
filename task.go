@@ -37,7 +37,9 @@ type BaseTask interface {
 	GetErrorDelay() time.Duration
 	HandleConsecutiveFails(errs []error) (wasHandled bool, nextStepLabel string)
 
-	// helpers
+	// Wraps goroutine spawning so that recovery is handled and properly logged
+	Go(func())
+
 	// step flow
 	GetSteps() []flowprotocol.TaskStep
 	CurrentStepIndex() int
