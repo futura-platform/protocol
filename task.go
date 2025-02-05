@@ -54,6 +54,9 @@ type BaseTask interface {
 	ReturnSmallErrorf(format string, args ...any) flowprotocol.TaskStepResult
 	ReturnFatalErrorf(format string, args ...any) flowprotocol.TaskStepResult
 
+	// Add a custom column to the frontend task table with the value. Rows without this set will have an empty string in the column.
+	SetFrontendColumn(sortKey int, columnName, value string)
+
 	// other
 	WithContext(ctx context.Context) BaseTask
 
