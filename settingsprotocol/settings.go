@@ -10,6 +10,7 @@ type UserSettings struct {
 	CapMonsterApiKey   string `json:"capMonsterApiKey"`
 	TwoCapApiKey       string `json:"twoCapApiKey"`
 	EZCaptchaApiKey    string `json:"ezCaptchaApiKey"`
+	EnigmaSolverApiKey string `json:"enigmaSolverApiKey"`
 	CapSolverApiKey    string `json:"capSolverApiKey"`
 	AntiCaptchaApiKey  string `json:"antiCaptchaApiKey"`
 	TextVerifiedApiKey string
