@@ -147,6 +147,20 @@ var (
 		Mobile:          false,
 		Bitness:         "64",
 	}
+	Chrome135_windows = BrowserProfile{
+		UserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+
+		Brands:          `"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"`,
+		FullVersionList: `"Google Chrome";v="135.0.7049.116", "Not-A.Brand";v="8.0.0.0", "Chromium";v="135.0.7049.116"`,
+
+		Platform:        `Windows`,
+		PlatformVersion: "135.0.7049.116",
+		Architecture:    "x86",
+		Model:           "",
+		Mobile:          false,
+		Bitness:         "64",
+	}
+	ChromeLatest_windows = Chrome135_windows
 
 	Chrome127_android = BrowserProfile{
 		UserAgent: "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Mobile Safari/537.36",

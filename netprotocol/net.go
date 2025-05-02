@@ -17,6 +17,7 @@ type BaseHttpClient interface {
 	GetContext() context.Context
 
 	GetBrowserProfile() BrowserProfile
+	SetBrowserProfile(profile BrowserProfile) error
 
 	GetProxy() *proxyprotocol.Proxy
 	SetProxy(proxy *proxyprotocol.Proxy) error
