@@ -26,6 +26,7 @@ type BaseHttpClient interface {
 	SetCookieJar(jar http.CookieJar)
 
 	GetHeaderDefaults() map[string]string
+	SetHeaderDefaults(h map[string]string)
 
 	DoRequest(req *Request) (*Response, error)
 
