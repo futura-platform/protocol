@@ -25,8 +25,14 @@ type MockResponse struct {
 	Url    string
 	Method string
 
-	ReplacementStatus int
-	ReplacementBody   string
+	ReplacementStatus  int
+	ReplacementHeaders []MockResponseHeader
+	ReplacementBody    string
+}
+
+type MockResponseHeader struct {
+	Name  string `json:"name"`
+	Value string `json:"value"`
 }
 
 type ExportSessionDetails struct {
