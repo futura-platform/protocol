@@ -16,4 +16,5 @@ type Solver interface {
 	SolveTurnstile(ctx context.Context, params TurnstileParams, silent bool) (string, time.Duration, error)
 	SolveImageToText(ctx context.Context, params ImageToTextParams, silent bool) (string, time.Duration, error)
 	SolveDatadome(ctx context.Context, params DatadomeParams, silent bool) (string, time.Duration, error)
+	SolveAWSWAFToken(ctx context.Context, params AWSWAFTokenParams, silent bool) (string, time.Duration, error)
 }
