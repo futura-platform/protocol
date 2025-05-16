@@ -6,7 +6,7 @@ import (
 )
 
 type CaptchaParams interface {
-	RecaptchaV2Params | RecaptchaV3Params | HcaptchaParams | TurnstileParams | ImageToTextParams | DatadomeParams
+	RecaptchaV2Params | RecaptchaV3Params | HcaptchaParams | TurnstileParams | ImageToTextParams | DatadomeParams | AWSWAFTokenParams | GeetestParams
 }
 
 type Solver interface {
@@ -17,4 +17,5 @@ type Solver interface {
 	SolveImageToText(ctx context.Context, params ImageToTextParams, silent bool) (string, time.Duration, error)
 	SolveDatadome(ctx context.Context, params DatadomeParams, silent bool) (string, time.Duration, error)
 	SolveAWSWAFToken(ctx context.Context, params AWSWAFTokenParams, silent bool) (string, time.Duration, error)
+	SolveGeetest(ctx context.Context, params GeetestParams, silent bool) (string, time.Duration, error)
 }
