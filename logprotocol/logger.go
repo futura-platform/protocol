@@ -16,5 +16,6 @@ type Logger interface {
 	LargeError(args ...any)
 	LargeErrorf(format string, args ...any)
 
-	SetFinal()
+	// add a custom column to the frontend task table with the value. Rows without this set will have an empty string in the column.
+	SetFrontendColumn(sortKey int, columnName, value string)
 }

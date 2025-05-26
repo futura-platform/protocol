@@ -3,7 +3,6 @@ package protocol
 import (
 	"context"
 	"log"
-	"time"
 
 	basicgroupsprotocol "github.com/futura-platform/protocol/basicgroups/protocol"
 	"github.com/futura-platform/protocol/browserprotocol"
@@ -20,8 +19,13 @@ import (
 )
 
 type BaseTask interface {
+	// step flow
 	flowprotocol.Context
+	// logging
 	logprotocol.Logger
+	// basic logging
+	BLog() *log.Logger
+
 	netprotocol.BaseHttpClient
 	captchaprotocol.Provider
 	browserprotocol.Spawner
@@ -30,40 +34,14 @@ type BaseTask interface {
 	settingsprotocol.Provider
 	smsprotocol.Provider
 	userinputprotocol.Provider
+	flowprotocol.LifecycleHooks
+
 	// basicgroupsprotocol.GenericProvider
 	ProxyProvider() basicgroupsprotocol.Provider[*proxyprotocol.Proxy]
-
-	// extendable error delay
-	GetErrorDelay() time.Duration
-
-	// step lifecycle hooks. The pointer patameters of these methods are gauranteed to be non-nil, and are edittable.
-	BeforeStep(step *flowprotocol.TaskStep) error
-	AfterStep(step flowprotocol.TaskStep, result *flowprotocol.TaskStepResult) error
-
-	// wraps goroutine spawning so that recovery is handled and properly logged
-	Go(func())
-
-	// step flow
-	GetSteps() []flowprotocol.TaskStep
-
-	CurrentStepIndex() int
-	CurrentStep() flowprotocol.TaskStep
-
-	// logging
-	BLog() *log.Logger
-	Fatalf(format string, args ...any) error
-
-	ReturnBasicStepSuccess() flowprotocol.TaskStepResult
-	ReturnSmallErrorf(format string, args ...any) flowprotocol.TaskStepResult
-	ReturnFatalErrorf(format string, args ...any) flowprotocol.TaskStepResult
-
-	// add a custom column to the frontend task table with the value. Rows without this set will have an empty string in the column.
-	SetFrontendColumn(sortKey int, columnName, value string)
+	RotateProxy() error
 
 	// other
 	WithContext(ctx context.Context) BaseTask
-
-	RotateProxy() error
 }
 
 // this is the type that users of the protocol package should use

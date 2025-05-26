@@ -11,10 +11,27 @@ import (
 type Context interface {
 	context.Context
 
+	// extendable error delay
+	GetErrorDelay() time.Duration
+
 	TaskId() string
 	FatalError(error)
 
+	// wraps goroutine spawning so that recovery is handled and properly logged
+	Go(func())
+
 	Sleep(time.Duration)
+
+	GetSteps() []TaskStep
+
+	CurrentStepIndex() int
+	CurrentStep() TaskStep
+
+	ReturnBasicStepSuccess() TaskStepResult
+	ReturnSmallErrorf(format string, args ...any) TaskStepResult
+	ReturnFatalErrorf(format string, args ...any) TaskStepResult
+
+	Fatalf(format string, args ...any) error
 }
 
 type TaskStepResult struct {
