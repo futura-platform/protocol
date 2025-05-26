@@ -18,9 +18,9 @@ type Context interface {
 }
 
 type TaskStepResult struct {
-	NextStepLabel string // label of the next TaskStep to execute (or terminate to stop the task), nil goes to next step in the flow if success
-	Success       bool
-	Error         error
+	// label of the next TaskStep to execute (or terminate to stop the task), nil goes to next step in the flow if success
+	NextStepLabel string
+	Err           error
 }
 
 type TaskStep struct {
