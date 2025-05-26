@@ -36,9 +36,9 @@ type BaseTask interface {
 	// extendable error delay
 	GetErrorDelay() time.Duration
 
-	// step lifecycle hooks
+	// step lifecycle hooks. The pointer patameters of these methods are gauranteed to be non-nil, and are edittable.
 	BeforeStep(step *flowprotocol.TaskStep) error
-	AfterStep(step *flowprotocol.TaskStep, result *flowprotocol.TaskStepResult) error
+	AfterStep(step flowprotocol.TaskStep, result *flowprotocol.TaskStepResult) error
 
 	// wraps goroutine spawning so that recovery is handled and properly logged
 	Go(func())
