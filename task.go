@@ -33,17 +33,20 @@ type BaseTask interface {
 	// basicgroupsprotocol.GenericProvider
 	ProxyProvider() basicgroupsprotocol.Provider[*proxyprotocol.Proxy]
 
-	// extendable getters
+	// extendable error delay
 	GetErrorDelay() time.Duration
-	HandleConsecutiveFails(errs []error) (wasHandled bool, nextStepLabel string)
 
-	// Wraps goroutine spawning so that recovery is handled and properly logged
+	// step lifecycle hooks
+	BeforeStep(step *flowprotocol.TaskStep) error
+	AfterStep(step *flowprotocol.TaskStep, result *flowprotocol.TaskStepResult) error
+
+	// wraps goroutine spawning so that recovery is handled and properly logged
 	Go(func())
 
 	// step flow
 	GetSteps() []flowprotocol.TaskStep
-	CurrentStepIndex() int
 
+	CurrentStepIndex() int
 	CurrentStep() flowprotocol.TaskStep
 
 	// logging
@@ -54,7 +57,7 @@ type BaseTask interface {
 	ReturnSmallErrorf(format string, args ...any) flowprotocol.TaskStepResult
 	ReturnFatalErrorf(format string, args ...any) flowprotocol.TaskStepResult
 
-	// Add a custom column to the frontend task table with the value. Rows without this set will have an empty string in the column.
+	// add a custom column to the frontend task table with the value. Rows without this set will have an empty string in the column.
 	SetFrontendColumn(sortKey int, columnName, value string)
 
 	// other
