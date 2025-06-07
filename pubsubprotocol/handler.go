@@ -22,5 +22,5 @@ const (
 
 type Provider interface {
 	Publish(context.Context, Scope, msg.Message) error
-	Subscribe(ctx context.Context, filter func(msg.Attributes) bool) (chan ReadMessage, chan error)
+	Subscribe(ctx context.Context, filter func(msg.Attributes) bool) (<-chan ReadMessage, <-chan error)
 }
