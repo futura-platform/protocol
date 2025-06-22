@@ -8,6 +8,7 @@ import (
 	"github.com/futura-platform/protocol/browserprotocol"
 	"github.com/futura-platform/protocol/captchaprotocol"
 	"github.com/futura-platform/protocol/flowprotocol"
+	"github.com/futura-platform/protocol/httpsserveprotocol"
 	"github.com/futura-platform/protocol/logprotocol"
 	"github.com/futura-platform/protocol/netprotocol"
 	"github.com/futura-platform/protocol/netprotocol/proxyprotocol"
@@ -35,6 +36,7 @@ type BaseTask interface {
 	smsprotocol.Provider
 	userinputprotocol.Provider
 	flowprotocol.LifecycleHooks
+	httpsserveprotocol.Provider
 
 	// basicgroupsprotocol.GenericProvider
 	ProxyProvider() basicgroupsprotocol.Provider[*proxyprotocol.Proxy]
