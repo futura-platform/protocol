@@ -38,8 +38,8 @@ type MockResponseHeader struct {
 type ExportSessionDetails struct {
 	TargetLocation string
 
-	CookieJar      http.CookieJar
-	SessionStorage map[string]any
+	CookieJar                    http.CookieJar
+	SessionStorage, LocalStorage map[string]any
 
 	Proxy *proxyprotocol.Proxy
 
