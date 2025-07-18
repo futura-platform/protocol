@@ -49,6 +49,7 @@ type BaseTask interface {
 // this is the type that users of the protocol package should use
 type Task[T any] struct {
 	BaseTask
+	netprotocol.HttpClient
 
 	Params *T
 }
