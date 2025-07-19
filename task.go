@@ -53,3 +53,13 @@ type Task[T any] struct {
 
 	Params *T
 }
+
+func MakeTask[T any](base BaseTask, params *T) *Task[T] {
+	return &Task[T]{
+		BaseTask: base,
+		HttpClient: netprotocol.HttpClient{
+			BaseHttpClient: base,
+		},
+		Params: params,
+	}
+}
