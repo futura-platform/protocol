@@ -14,6 +14,7 @@ type UserSettings struct {
 	CapSolverApiKey         string `json:"capSolverApiKey"`
 	AntiCaptchaApiKey       string `json:"antiCaptchaApiKey"`
 	FreeCaptchaBypassApiKey string
+	CaptchaFunApiKey        string
 	TextVerifiedApiKey      string
 	SMSPoolApiKey           string
 	PVADealsApiKey          string
