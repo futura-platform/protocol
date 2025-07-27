@@ -38,6 +38,11 @@ type TaskStepResult struct {
 	// label of the next TaskStep to execute (or terminate to stop the task), nil goes to next step in the flow if success
 	NextStepLabel string
 	Err           error
+
+	// setting this will cause the task to terminate and return the result immediately
+	// currently this is only used in lambda tasks
+	// The value MUST be JSON marshalable
+	Result any
 }
 
 type TaskStep struct {
