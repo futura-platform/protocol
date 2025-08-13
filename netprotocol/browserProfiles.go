@@ -171,7 +171,20 @@ var (
 		Mobile:          false,
 		Bitness:         "64",
 	}
-	ChromeLatest_mac = Chrome138_mac
+	Chrome139_mac = BrowserProfile{
+		UserAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+
+		Brands:          `"Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"`,
+		FullVersionList: `"Not;A=Brand";v="99.0.0.0", "Google Chrome";v="139.0.7258.67", "Chromium";v="139.0.7258.67"`,
+
+		Platform:        `macOS`,
+		PlatformVersion: "139.0.7258.67",
+		Architecture:    "arm",
+		Model:           "",
+		Mobile:          false,
+		Bitness:         "64",
+	}
+	ChromeLatest_mac = Chrome139_mac
 
 	Chrome127_windows = BrowserProfile{
 		UserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
@@ -225,7 +238,20 @@ var (
 		Mobile:          false,
 		Bitness:         "64",
 	}
-	ChromeLatest_windows = Chrome138_windows
+	Chrome139_windows = BrowserProfile{
+		UserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+
+		Brands:          `"Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"`,
+		FullVersionList: `"Not;A=Brand";v="99.0.0.0", "Google Chrome";v="139.0.7258.67", "Chromium";v="139.0.7258.67"`,
+
+		Platform:        `Windows`,
+		PlatformVersion: "139.0.7258.67",
+		Architecture:    "x86",
+		Model:           "",
+		Mobile:          false,
+		Bitness:         "64",
+	}
+	ChromeLatest_windows = Chrome139_windows
 
 	Chrome127_android = BrowserProfile{
 		UserAgent: "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Mobile Safari/537.36",
