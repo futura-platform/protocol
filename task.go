@@ -27,7 +27,10 @@ type BaseTask interface {
 	// basic logging
 	BLog() *log.Logger
 
+	// by default a task is a client, but it can also act as a client provider to make more client instances
+	netprotocol.ClientProvider
 	netprotocol.BaseHttpClient
+
 	captchaprotocol.Provider
 	browserprotocol.Spawner
 	pubsubprotocol.Provider
