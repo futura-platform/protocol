@@ -278,7 +278,7 @@ var (
 		Mobile:          false,
 		Bitness:         "64",
 	}
-	Chrome140_windows = BrowserProfile{
+	Chrome141_windows = BrowserProfile{
 		UserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
 
 		Brands:          `"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"`,
@@ -290,12 +290,6 @@ var (
 		Model:           "",
 		Mobile:          false,
 		Bitness:         "64",
-	}
-	Chrome141_windows = BrowserProfile{
-		UserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
-
-		Brands:          `"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"`,
-		FullVersionList: `"Google Chrome";v="141.0.7390.55", "Not?A_Brand";v="8.0.0.0", "Chromium";v="141.0.7390.55"`,
 	}
 	ChromeLatest_windows = Chrome141_windows
 
