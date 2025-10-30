@@ -198,7 +198,6 @@ var (
 		Bitness:         "64",
 	}
 	Chrome141_mac = BrowserProfile{
-
 		UserAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
 
 		Brands:          `"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"`,
@@ -211,7 +210,20 @@ var (
 		Mobile:          false,
 		Bitness:         "64",
 	}
-	ChromeLatest_mac = Chrome141_mac
+	Chrome142_mac = BrowserProfile{
+		UserAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+
+		Brands:          `"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"`,
+		FullVersionList: `"Chromium";v="142.0.7444.60", "Google Chrome";v="142.0.7444.60", "Not_A Brand";v="99.0.0.0"`,
+
+		Platform:        `macOS`,
+		PlatformVersion: "142.0.7444.60",
+		Architecture:    "arm",
+		Model:           "",
+		Mobile:          false,
+		Bitness:         "64",
+	}
+	ChromeLatest_mac = Chrome142_mac
 
 	Chrome127_windows = BrowserProfile{
 		UserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
@@ -291,7 +303,20 @@ var (
 		Mobile:          false,
 		Bitness:         "64",
 	}
-	ChromeLatest_windows = Chrome141_windows
+	Chrome142_windows = BrowserProfile{
+		UserAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+
+		Brands:          `"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"`,
+		FullVersionList: `"Chromium";v="142.0.7444.60", "Google Chrome";v="142.0.7444.60", "Not_A Brand";v="99.0.0.0"`,
+
+		Platform:        `Windows`,
+		PlatformVersion: "142.0.7444.60",
+		Architecture:    "x86",
+		Model:           "",
+		Mobile:          false,
+		Bitness:         "64",
+	}
+	ChromeLatest_windows = Chrome142_windows
 
 	Chrome127_android = BrowserProfile{
 		UserAgent: "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Mobile Safari/537.36",
